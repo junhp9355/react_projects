@@ -1,45 +1,58 @@
 import React, { useState } from "react";
+import Counter from "./components/Counter";
+import Converter from "./components/Converter";
+import Mybtn from "./components/Mybtn";
 
 function App() {
   const [counter, setCounter] = useState(0);
-  const [name, setName] = useState("사용자");
-  const [articles, setArticles] = useState([
-    { subject: "글 1번", content: "내용 1번" },
-    { subject: "글 2번", content: "내용 2번" },
-    { subject: "글 3번", content: "내용 3번" },
-  ]);
-
-  const onClickfunc = () => {
-    setCounter(counter + 1);
-  };
-
-  const changeName = () => {
-    setName("박준형");
-  };
-
-  const addArticle = () => {
-    setArticles(articles.concat({ subject: "글 4번", content: "내용 4번" }));
-  };
-
   return (
-    <div>
-      <div>환영합니다. {name}님</div>
-      <div>{counter}번 클릭했습니다</div>
-      <button onClick={changeName}>이름변경</button>
-      <button onClick={onClickfunc}>Click me</button>
-
-      <ul>
-        {articles.map((article, index) => {
-          return (
-            <li key={index}>
-              <div>제목: {article.subject}</div>
-              <div>내용: {article.content}</div>
-            </li>
-          );
-        })}
-      </ul>
-      <button onClick={addArticle}>게시물 추가</button>
-    </div>
+    <>
+      <Counter counter={counter} setCounter={setCounter} />
+      <Converter counter={counter} />
+      <hr />
+      <Mybtn
+        text={"1번 버튼"}
+        fontSize={"10px"}
+        borderRadius={"0px"}
+        isChecked={true}
+        backgroundColor={"orange"}
+      />
+      <Mybtn
+        text={"2번 버튼"}
+        fontSize={"12px"}
+        borderRadius={"10px"}
+        isChecked={false}
+        backgroundColor={"green"}
+      />
+      <Mybtn
+        text={"3번 버튼"}
+        fontSize={"14px"}
+        borderRadius={"20px"}
+        isChecked={true}
+        backgroundColor={"blue"}
+      />
+      <Mybtn
+        text={"4번 버튼"}
+        fontSize={"16px"}
+        borderRadius={"30px"}
+        isChecked={false}
+        backgroundColor={"black"}
+      />
+      <Mybtn
+        text={"5번 버튼"}
+        fontSize={"18px"}
+        borderRadius={"40px"}
+        isChecked={true}
+        backgroundColor={"red"}
+      />
+      <Mybtn
+        text={"6번 버튼"}
+        fontSize={"20px"}
+        borderRadius={"50px"}
+        isChecked={false}
+        backgroundColor={"pink"}
+      />
+    </>
   );
 }
 
