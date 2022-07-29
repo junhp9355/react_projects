@@ -22,7 +22,7 @@ const Mybtn = ({
           fontWeight: "bold",
         }}
         onClick={() => {
-          alert(`${text}` + "을 클릭하셨습니다.");
+          alert(`${text} 을 클릭하셨습니다.`);
         }}
       >
         {text}

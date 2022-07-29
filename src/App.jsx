@@ -2,9 +2,23 @@ import React, { useState } from "react";
 import Counter from "./components/Counter";
 import Converter from "./components/Converter";
 import Mybtn from "./components/Mybtn";
+import TimeConverter from "./components/TimeConverter";
 
 function App() {
   const [counter, setCounter] = useState(0);
+  const [amount, setAmount] = useState(0);
+  const [active, setActive] = useState(true);
+  const reset = () => {
+    setAmount(0);
+  };
+  const onChange = (event) => {
+    setAmount(event.target.value);
+  };
+  const changeActive = () => {
+    reset();
+    setActive(!active);
+  };
+
   return (
     <>
       <Counter counter={counter} setCounter={setCounter} />
@@ -51,6 +65,13 @@ function App() {
         borderRadius={"50px"}
         isChecked={false}
         backgroundColor={"pink"}
+      />
+      <TimeConverter
+        amount={amount}
+        active={active}
+        changeActive={changeActive}
+        reset={reset}
+        onChange={onChange}
       />
     </>
   );
