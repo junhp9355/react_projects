@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function Counter({ counter, setCounter }) {
+function Counter({ counter, setCounter, setSearchWord, searchWord }) {
   const onClickfunc = () => {
     setCounter(counter + 1);
   };
+  const onChanges = (e) => {
+    setSearchWord(e.target.value);
+  };
+
+  useEffect(() => {
+    console.log("API호출");
+  }, []);
+  useEffect(() => {
+    console.log("change input");
+  }, [searchWord]);
+  useEffect(() => {
+    console.log(counter);
+  }, [counter]);
 
   return (
     <div>
+      <input
+        placeholder="검색어"
+        type="text"
+        value={searchWord}
+        onChange={onChanges}
+      />
       <div
         style={{
           fontWeight: "bold",

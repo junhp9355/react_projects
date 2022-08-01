@@ -4,13 +4,13 @@ function Converter({ counter }) {
   return (
     <div
       style={{
-        backgroundColor: "red",
+        backgroundColor: "green",
         color: "white",
         display: "inline-block",
-        border: "10px solid red",
-        margin: "20px 0px",
+        border: "5px solid green",
+        margin: "10px 0px",
         fontWeight: "bold",
-        fontSize: "2rem",
+        fontSize: "1.5rem",
       }}
     >
       {counter % 2 === 0 ? "짝수" : "홀수"}

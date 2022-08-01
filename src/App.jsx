@@ -3,11 +3,15 @@ import Counter from "./components/Counter";
 import Converter from "./components/Converter";
 import Mybtn from "./components/Mybtn";
 import TimeConverter from "./components/TimeConverter";
+import TodoList from "./components/TodoList";
 
 function App() {
   const [counter, setCounter] = useState(0);
   const [amount, setAmount] = useState(0);
   const [active, setActive] = useState(true);
+  const [searchWord, setSearchWord] = useState("");
+  const [todos, setTodos] = useState([]);
+  const [todo, setTodo] = useState("");
   const reset = () => {
     setAmount(0);
   };
@@ -21,7 +25,12 @@ function App() {
 
   return (
     <>
-      <Counter counter={counter} setCounter={setCounter} />
+      <Counter
+        counter={counter}
+        setCounter={setCounter}
+        searchWord={searchWord}
+        setSearchWord={setSearchWord}
+      />
       <Converter counter={counter} />
       <hr />
       <Mybtn
@@ -66,12 +75,20 @@ function App() {
         isChecked={false}
         backgroundColor={"pink"}
       />
+      <hr />
       <TimeConverter
         amount={amount}
         active={active}
         changeActive={changeActive}
         reset={reset}
         onChange={onChange}
+      />
+      <hr />
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
+        todo={todo}
+        setTodo={setTodo}
       />
     </>
   );

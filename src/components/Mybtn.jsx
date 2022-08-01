@@ -8,7 +8,7 @@ const Mybtn = ({
   backgroundColor,
 }) => {
   return (
-    <div>
+    <div style={{ display: "inline-block" }}>
       <button
         style={{
           backgroundColor: `${backgroundColor}`,
