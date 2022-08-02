@@ -1,19 +1,18 @@
 import React from "react";
 
-const TodoList = ({ todo, todos, setTodo, setTodos }) => {
+const TodoList = ({ content, contents, setContent, setContents }) => {
   const onChange = (e) => {
-    setTodo(e.target.value);
+    setContent(e.target.value);
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    if (todo === "") {
+    if (content === "") {
       alert("1글자 이상 입력해주세요");
       return;
     }
 
-    setTodos((currentArray) => [todo, ...currentArray]);
-    setTodo("");
-    alert("등록되었습니다");
+    setContents((currentArray) => [content, ...currentArray]);
+    setContent("");
   };
 
   return (
@@ -23,7 +22,7 @@ const TodoList = ({ todo, todos, setTodo, setTodos }) => {
         <input
           type="text"
           onChange={onChange}
-          value={todo}
+          value={content}
           placeholder="할 일을 적어주세요"
         />
         <button>등록</button>
@@ -31,15 +30,15 @@ const TodoList = ({ todo, todos, setTodo, setTodos }) => {
 
       <button
         onClick={() => {
-          console.log(todos);
+          console.log(contents);
         }}
       >
         Check
       </button>
       <hr />
       <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
+        {contents.map((content, index) => (
+          <li key={index}>{content}</li>
         ))}
       </ul>
     </div>

@@ -1,17 +1,38 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Counter from "./components/Counter";
 import Converter from "./components/Converter";
 import Mybtn from "./components/Mybtn";
 import TimeConverter from "./components/TimeConverter";
 import TodoList from "./components/TodoList";
+import TodoTemplate from "./components/TodoTemplate";
+import TodoInsert from "./components/TodoInsert";
+import TodoTemplateList from "./components/TodoTemplateList";
 
 function App() {
   const [counter, setCounter] = useState(0);
   const [amount, setAmount] = useState(0);
   const [active, setActive] = useState(true);
   const [searchWord, setSearchWord] = useState("");
+  const [contents, setContents] = useState([]);
   const [todos, setTodos] = useState([]);
-  const [todo, setTodo] = useState("");
+  const [content, setContent] = useState("");
+  const nextID = useRef(1);
+  const onInsert = (text) => {
+    const todo = {
+      id: nextID.current,
+      text: text,
+      checked: false,
+    };
+    setTodos((todos) => todos.concat(todo));
+    nextID.current++;
+  };
+  const onToggle = (id) => {
+    setTodos((todos) =>
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, checked: !todo.checked } : todo
+      )
+    );
+  };
   const reset = () => {
     setAmount(0);
   };
@@ -25,6 +46,11 @@ function App() {
 
   return (
     <>
+      <TodoTemplate>
+        <TodoInsert onInsert={onInsert} />
+        <TodoTemplateList todos={todos} onToggle={onToggle} />
+      </TodoTemplate>
+      <hr />
       <Counter
         counter={counter}
         setCounter={setCounter}
@@ -85,10 +111,10 @@ function App() {
       />
       <hr />
       <TodoList
-        todos={todos}
-        setTodos={setTodos}
-        todo={todo}
-        setTodo={setTodo}
+        contents={contents}
+        setContents={setContents}
+        content={content}
+        setContent={setContent}
       />
     </>
   );
